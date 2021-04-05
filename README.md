@@ -1,4 +1,4 @@
-#アプリ名
+## アプリ名
 Myフィギュア
 
 ## サイト概要
@@ -8,7 +8,9 @@ Myフィギュア
 お気に入りの写真を投稿し自慢しましょう
 
 ### テーマを選んだ理由
-フィギュアが好きだから
+フィギュアが好きだから。
+Instagram等の画像投稿アプリとの違いはフィギュアのみの写真に特化しているところ。
+
 
 ### ターゲットユーザ
 フィギュアが好きなユーザ
@@ -24,4 +26,3 @@ https://docs.google.com/spreadsheets/d/1KOVee-ROrWZqk4Hy5BLx3gQHOLMZMTrBtGyviBGc
 - 言語：HTML,CSS,Ruby,SQL,Python
 - フレームワーク：Ruby on Rails
 - IDE：Cloud9
-- データセット：MovieLens 100k
