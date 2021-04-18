@@ -1,0 +1,2 @@
+module FigureCommentsHelper
+end

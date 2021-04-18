@@ -2,18 +2,20 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4" style="background-color: orange;">
-      <h2>サイドバー</h2>
-      <h3 class="name"><%= @user.name%></h3>
+    <!--<div class="col-lg-4" style="background-color: orange;">-->
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <h3 class="name"><%= @user.name%></h3>
+      <h3 class="introduction"><%= @user.introduction %></h3>
       <% if @user.id == current_user.id %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
       <% end %>
 
+      <%= render 'figures/list', figures: @figures %>
+
     </div>
 
 
-   <div class="col-lg-8" style="background-color: red;">
+   <!--<div class="col-lg-8" style="background-color: red;">-->
 
 
 

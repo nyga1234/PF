@@ -1,0 +1,14 @@
+<% figures.each do |figure| %>
+<div>
+  <%= link_to figure_path(figure.id) do %>
+  <%= attachment_image_tag figure, :figure_image %>
+  <% end %>
+  <%= link_to figure_path(figure.id) do %>
+  <p>タイトル: <%= figure.title %></p>
+  <% end %>
+  ♥<%= figure.favorites.count %>
+  コメント<%= figure.figure_comments.count %>
+</div>
+<% end %>
+
+<%= paginate figures %>

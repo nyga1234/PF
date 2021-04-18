@@ -1,0 +1,51 @@
+<div class="figure-body">
+  <%= attachment_image_tag @figure.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <p>投稿者名:
+  <%= link_to user_path(@figure.user.id) do %>
+  <%= @figure.user.name %></p>
+  <% end %>
+  <p>投稿日時: <%= @figure.created_at.strftime('%Y/%m/%d') %></p>
+  <p>タイトル: <%= @figure.title %></p>
+  <p>説明：<%= @figure.description %></p>
+  <%= attachment_image_tag @figure, :figure_image %>
+  <% if @figure.user == current_user %>
+    <%= link_to "投稿を削除する", figure_path(@figure), method: :delete %>
+  <% end %>
+</div>
+
+<% if @figure.favorited_by?(current_user) %>
+    <p>
+      <%= link_to figure_favorites_path(@figure), method: :delete do %>
+      ♥<%= @figure.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to figure_favorites_path(@figure), method: :post do %>
+      ♡<%= @figure.favorites.count %>
+      <% end %>
+    </p>
+<% end %>
+
+<div class="comments">
+  <!--<p>コメント数: <%#= @figure.figure_comments.count %></p>-->
+  <% @figure.figure_comments.each do |figure_comment| %>
+  <%= link_to user_path(@figure.user.id) do %>
+  <p><%= attachment_image_tag @figure.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p><%= @figure.user.name %></p>
+  <% end %>
+  <%= figure_comment.comment %>
+  <%= figure_comment.created_at.strftime('%Y/%m/%d') %>
+    <% if figure_comment.user == current_user %>
+    <div class="comment-delete">
+      <%= link_to "コメントを削除する", figure_figure_comment_path(figure_comment.figure, figure_comment), method: :delete %>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="new-comment">
+  <%= form_with(model:[@figure, @figure_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントする" %>
+  <%= f.submit "送信" %>
+  <% end %>
+</div>
