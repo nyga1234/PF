@@ -1,1 +1,17 @@
+<%= form_with url: search_figures_path, method: :get, local: true do |f| %>
+<%= f.text_field :title, autofocus: true, id:"inputName", placeholder:"画像を探してみる" %>
+  <%= f.submit :search %>
+<% end %>
+
+<div class="main-visual-body">
+  <ul class="main-visual-title">
+    <strong><span>フィギュアコレクション</span></strong>
+  </ul>
+  <ul class="main-visual-liset">
+    <%= link_to "フィギュア写真を投稿してみる", new_figure_path %>
+  </ul>
+</div>
+
+
+
 <%= render 'figures/list', figures: @figures %>

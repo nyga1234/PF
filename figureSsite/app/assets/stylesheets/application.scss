@@ -13,4 +13,110 @@
  *= require_tree .
  *= require_self
  */
+
+ /* ブラウザがそれぞれ持っているCSSをリセットするための記述 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+
+header, h1, nav, .list-comment {
+  font-family: 'Kaushan Script', cursive, sans-serif;
+}
+
+
+header {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+
+}
+
+header .headline {
+  font-size: 32px;
+}
+
+.nav-title{
+  font-size: 32px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+
+.nav-list {
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.main-visual-title{
+  font-size: 32px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+
+.main-visual-list {
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+
+
+main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.list-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list-box {
+  width: 300px;
+  height: 350px;
+  margin: 10px;
+  position: relative;
+}
+
+.list-comment {
+  width: 200px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.list-body {
+  display: block;
+  color: gray;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list-title {
+  font-size: 18px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
  @import "bootstrap";
