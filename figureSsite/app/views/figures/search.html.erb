@@ -6,6 +6,7 @@
   <%= f.submit :search %>
 <% end %>
 
+<div class="list-wrap">
     <% @figures.each do |figure| %>
   <div class="list-box">
   <%= link_to figure_path(figure.id) do %>
@@ -33,5 +34,4 @@
   </div>
   </div>
 <% end %>
-  </tbody>
-</table>
+</div>

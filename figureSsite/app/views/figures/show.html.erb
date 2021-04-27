@@ -16,10 +16,10 @@
 
   <div class="figure-change-box">
       <% if @figure.user == current_user %>
-      <%= link_to "投稿内容を編集する", edit_figure_path(@figure.id) %>
+      <%= link_to "投稿内容を編集する", edit_figure_path(@figure.id), class:"btn btn-lg btn-block btn-info mt-4" %>
       <% end %>
       <% if @figure.user == current_user %>
-      <%= link_to "この投稿を削除する", figure_path(@figure), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+      <%= link_to "この投稿を削除する", figure_path(@figure), method: :delete, class:"btn btn-lg btn-danger btn-block btn-info mt-4", "data-confirm" => "本当に削除しますか?" %>
       <% end %>
   </div>
 
@@ -41,14 +41,14 @@
   <!--<p>コメント数: <%#= @figure.figure_comments.count %></p>-->
   <% @figure.figure_comments.each do |figure_comment| %>
   <%= link_to user_path(@figure.user.id) do %>
-  <p><%= attachment_image_tag @figure.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p><%= attachment_image_tag @figure.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></p>
   <p><%= @figure.user.name %></p>
   <% end %>
   <%= figure_comment.comment %>
   <%= figure_comment.created_at.strftime('%Y/%m/%d') %>
     <% if figure_comment.user == current_user %>
     <div class="comment-delete">
-      <%= link_to "コメントを削除する", figure_figure_comment_path(figure_comment.figure, figure_comment), method: :delete %>
+      <%= link_to "コメントを削除する", figure_figure_comment_path(figure_comment.figure, figure_comment), method: :delete, "data-confirm" => "本当に削除しますか?" %>
     </div>
     <% end %>
   <% end %>

@@ -1,0 +1,25 @@
+<%= form_with url: search_show_topics_path, method: :get, local: true do |f| %>
+<%= f.text_field :body, autofocus: true, id:"inputName", placeholder:"スレッド内検索" %>
+  <%= f.submit :search_show %>
+<% end %>
+
+
+<% @topic_posts.each_with_index do |topic_post , idx| %>
+  <p><%= idx + 1 %>：<%= topic_post.postname %>：<%= topic_post.created_at.strftime('%Y/%m/%d') %></p>
+  <p><%= topic_post.postname %></p>
+  <p><%= topic_post.body %></p>
+
+  <% if topic_post.user == current_user %>
+    <div class="comment-delete">
+      <%= link_to "レスを削除する", topic_topic_post_path(topic_post.topic, topic_post), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+    </div>
+    <% end %>
+
+<% end %>
+
+
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+
+

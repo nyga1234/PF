@@ -1,0 +1,38 @@
+
+
+<%= form_with url: search_topics_path, method: :get, local: true do |f| %>
+<%= f.text_field :topicstitle, autofocus: true, id:"inputName", placeholder:"スレッド名検索" %>
+  <%= f.submit :search %>
+<% end %>
+
+　　　　<h4>スレッド作成</h4>
+        <%= form_with model:@newtopic, local:true do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
+            </div>
+            <%= f.text_field :topicstitle, class:"form-control", placeholder:"スレッド名" %>
+          </div>
+          <hr>
+          <%= f.submit '作成', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>スレッド一覧</h3>
+<% @topics.each do |topic| %>
+        <div class="topic-item">
+          <section class="topic-text">
+            <h3 class="topc-text-heading"><%= link_to topic.topicstitle, topic_path(topic.id) %></h3><strong><i class="far fa-comment"></i><span> <%= topic.topic_posts.count %></span></strong>
+            <% if topic.user == current_user %>
+    <div class="comment-delete">
+      <%= link_to "スレッドを削除する", topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+    </div>
+    <% end %>
+            <p class="topic-date"><%= topic.created_at %></p>
+          </section>
+        </div>
+      <% end %>
+

@@ -1,0 +1,41 @@
+<%= form_with url: search_show_topics_path, method: :get, local: true do |f| %>
+<%= f.text_field :body, autofocus: true, id:"inputName", placeholder:"スレッド内検索" %>
+  <%= f.submit :search_show %>
+<% end %>
+
+<h3>スレッド名：<%= @topic.topicstitle %></h3>
+<% @topic_posts.each_with_index do |topic_post , idx| %>
+  <p><%= idx + 1 %>：<%= topic_post.postname %>：<%= topic_post.created_at.strftime('%Y/%m/%d') %></p>
+  <p><%= topic_post.postname %></p>
+  <p><%= topic_post.body %></p>
+
+  <% if topic_post.user == current_user %>
+    <div class="comment-delete">
+      <%= link_to "レスを削除する", topic_topic_post_path(topic_post.topic, topic_post), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+    </div>
+    <% end %>
+
+<% end %>
+
+
+<%= form_with(model:[@topic, @topic_postnew], local: true) do |f| %>
+<div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
+            </div>
+            <%= f.text_field :postname, class:"form-control", placeholder:"noname" %>
+          </div>
+          </div>
+            <%= f.text_area :body, class:"form-control", placeholder:"本文" %>
+          </div>
+          <hr>
+          <%= f.hidden_field :topic_id %>
+          <%= f.submit '作成', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
