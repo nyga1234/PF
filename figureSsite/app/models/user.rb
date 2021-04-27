@@ -27,10 +27,6 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  validates :profile_image, presence: true
-  validates :email, presence: true
-  validates :name, presence: true
-  validates :introduction, presence: true
 
          attachment :profile_image
 end
