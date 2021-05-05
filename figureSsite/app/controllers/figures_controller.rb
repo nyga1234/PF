@@ -16,6 +16,11 @@ class FiguresController < ApplicationController
     @figure = Figure.new(figure_params)
     @figure.user_id = current_user.id
     if @figure.save
+      tags = Vision.get_image_data(@figure.figure_image)
+      tags.each do |tag|
+        @figure.tags.create(name: tag)
+      end
+
       redirect_to figure_path(@figure.id)
     else
       render :new
