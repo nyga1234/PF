@@ -6,7 +6,6 @@
 <h3>スレッド名：<%= @topic.topicstitle %></h3>
 <% @topic_posts.each_with_index do |topic_post , idx| %>
   <p><%= idx + 1 %>：<%= topic_post.postname %>：<%= topic_post.created_at.strftime('%Y/%m/%d') %></p>
-  <p><%= topic_post.postname %></p>
   <p><%= topic_post.body %></p>
 
   <% if topic_post.user == current_user %>
@@ -30,7 +29,7 @@
           </div>
           <hr>
           <%= f.hidden_field :topic_id %>
-          <%= f.submit '作成', class:"btn btn-lg btn-block btn-info mt-4" %>
+          <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
       </div>
     </div>
