@@ -16,6 +16,7 @@
 
 <% end %>
 
+<%= paginate @topic_posts %>
 
 <%= form_with(model:[@topic, @topic_postnew], local: true) do |f| %>
 <div class="input-group mb-3 mt-4">

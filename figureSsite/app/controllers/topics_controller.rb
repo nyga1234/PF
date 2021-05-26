@@ -37,7 +37,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @topic_posts = TopicPost.where(topic_id: params[:id])
+    @topic_posts = TopicPost.where(topic_id: params[:id]).page(params[:page]).per(10)
+    #$@topic_postspage = TopicPost.page(params[:page]).reverse_order
     @topic_postnew = TopicPost.new
   end
 
