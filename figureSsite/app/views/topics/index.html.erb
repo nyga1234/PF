@@ -25,13 +25,14 @@
 <% @topics.each do |topic| %>
         <div class="topic-item">
           <section class="topic-text">
-            <h3 class="topc-text-heading"><%= link_to topic.topicstitle, topic_path(topic.id) %></h3><strong><i class="far fa-comment"></i><span> <%= topic.topic_posts.count %></span></strong>
+            <class="topic-date"><%= topic.created_at %>
+            <h3 class="topc-text-heading"><%= link_to topic.topicstitle, topic_path(topic.id) %><strong><span> (<%= topic.topic_posts.count %>)</span></strong></h3>
             <% if topic.user == current_user %>
     <div class="comment-delete">
       <%= link_to "スレッドを削除する", topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
     </div>
     <% end %>
-            <p class="topic-date"><%= topic.created_at %></p>
+</br>
           </section>
         </div>
       <% end %>
