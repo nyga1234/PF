@@ -1,18 +1,23 @@
 
 
 <% unless user == current_user %>
-         <th>
-         <% if current_user.following?(user) %>
-         <%= link_to user_relationships_path(user.id), method: :delete do %>
-         <div class="btn btn-danger btn-block">
-         <strong><span>フォロワー</span></strong>
-         </div>
-         <% end %>
-         <% else %>
-         <%= link_to user_relationships_path(user.id), method: :POST do %>
-         <div class="btn btn-primary btn-block">
-         <strong><span>フォロー</span></strong>
-         </div>
-         <% end %>
-         <% end %>
-         <% end %>
+
+  <% if current_user.following?(user) %>
+
+    <%= link_to user_relationships_path(user.id), method: :delete do %>
+    <div class="btn btn-danger btn-block">
+    <strong><span>フォロワー</span></strong>
+    </div>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to user_relationships_path(user.id), method: :POST do %>
+    <div class="btn btn-primary btn-block">
+    <strong><span>フォロー</span></strong>
+    </div>
+    <% end %>
+
+  <% end %>
+
+<% end %>
