@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, uniqueness: true
+
   has_many :figures, dependent: :destroy
   has_many :figure_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -27,4 +29,6 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
          attachment :profile_image
+
+
 end

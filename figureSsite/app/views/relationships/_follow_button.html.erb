@@ -6,7 +6,11 @@
 
     <%= link_to user_relationships_path(user.id), method: :delete do %>
     <div class="btn btn-danger btn-block">
-    <strong><span>フォロワー</span></strong>
+      <strong>
+        <div class="relationships-block">
+          フォロワー
+        </div>
+      </strong>
     </div>
     <% end %>
 
@@ -14,7 +18,11 @@
 
     <%= link_to user_relationships_path(user.id), method: :POST do %>
     <div class="btn btn-primary btn-block">
-    <strong><span>フォロー</span></strong>
+    <strong>
+        <div class="relationships-block">
+          フォロー
+        </div>
+      </strong>
     </div>
     <% end %>
 
